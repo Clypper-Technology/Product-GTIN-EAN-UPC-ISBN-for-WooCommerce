@@ -214,7 +214,13 @@ class WPM_Product_GTIN_WC_Frontend {
 		return ob_get_clean();
 	}
 
-    function product_gtin_validate_wrapper( $wrapper ) {
+    /**
+     * Only output allowed HTML tags in the wrapper attribute.
+     *
+     * @since    1.1.2
+     * @author Casper Holten
+     */
+    private function product_gtin_validate_wrapper( $wrapper ) {
 
         $allowed_wrapper_tags = [ 'div', 'span', 'p', 'section'];
 
