@@ -6,7 +6,7 @@ Tags: GTIN, EAN, ISBN, UPC, JAN, ITF-14
 Requires at least: 4.0.0
 Requires PHP: 7.0
 Tested up to: 6.4
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,8 +121,11 @@ When you create or update a product via REST API it is possible set or update th
 
 == Changelog ==
 
-= 1.1.2 - Released: 3 Marc, 2024 =
-* Fixed WPScan vulnerability: CVE-2023-0068.
+= 1.1.3 - Released: 3 March 2024 =
+*  Declare HPOS (High-Performance Order Storage) compatability
+
+= 1.1.2 - Released: 3 March 2024 =
+*  Fixed WPScan vulnerability: CVE-2023-0068.
 
 = 1.1.1 - Released: 16 Nov, 2020 =
 *  New: Support for WordPress 5.6
