@@ -171,16 +171,23 @@ class WPM_Product_GTIN_WC_Frontend {
 	public function product_gtin_shortcode( $atts ) {
 		global $post;
 
-		$atts = shortcode_atts( array(
-			'id'            => '',
-			'label'         => get_option( 'wpm_pgw_public_label', __( "Code EAN:", 'product-gtin-ean-upc-isbn-for-woocommerce' ) ),
-			'wrapper'       => is_shop() ? 'div' : 'span',
-			'wrapper_code'  => 'span',
-			'class_wrapper' => 'wpm_gtin_code_wrapper',
-			'class'         => 'wpm_gtin',
-		), $atts, 'wpm_product_gtin' );
+        $atts = shortcode_atts( array(
+            'id'            => '',
+            'label'         => get_option( 'wpm_pgw_public_label', __( "Code EAN:", 'product-gtin-ean-upc-isbn-for-woocommerce' ) ),
+            'wrapper'       => is_shop() ? 'div' : 'span',
+            'wrapper_code'  => 'span',
+            'class_wrapper' => 'wpm_gtin_code_wrapper',
+            'class'         => 'wpm_gtin',
+        ), $atts, 'wpm_product_gtin' );
 
-		if ( ! empty( $atts['id'] ) ) {
+        $atts['id'] = absint($atts['id']);
+        $atts['label'] = sanitize_text_field($atts['label']);
+        $atts['wrapper'] = $this->product_gtin_validate_wrapper($atts['wrapper']);
+        $atts['wrapper_code'] = esc_attr($atts['wrapper_code']);
+        $atts['class_wrapper'] = esc_attr($atts['class_wrapper']);
+        $atts['class'] = esc_attr($atts['class']);
+
+        if ( ! empty( $atts['id'] ) ) {
 			$product_data = get_post( $atts['id'] );
 		} elseif ( ! is_null( $post ) ) {
 			$product_data = $post;
@@ -206,6 +213,16 @@ class WPM_Product_GTIN_WC_Frontend {
 
 		return ob_get_clean();
 	}
+
+    function product_gtin_validate_wrapper( $wrapper ) {
+
+        $allowed_wrapper_tags = [ 'div', 'span', 'p', 'section'];
+
+        if( in_array( $wrapper, $allowed_wrapper_tags ) ) {
+            return $wrapper;
+        }
+        return 'span';
+    }
 
 	/**
 	 * @param $product
