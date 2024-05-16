@@ -1,7 +1,7 @@
 === Product GTIN (EAN, UPC, ISBN) for WooCommerce ===
 
 Contributors: kreamweb, Casper Holten (Clypper Technology)
-Donate link: https://paypal.me/pools/c/85ErI7sdcf
+Donate link: Enjoy it for free :)
 Tags: GTIN, EAN, ISBN, UPC, JAN, ITF-14
 Requires at least: 4.0.0
 Requires PHP: 7.0
